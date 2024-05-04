@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 100vh;
+  height: 80vh;
   background-color: var(--color-light);
   overflow: hidden;
 }
@@ -33,7 +33,7 @@
   position: relative;
   z-index: 2;
   align-self: center;
-  padding-top: 8rem;
+  padding: 8rem 0;
   color: var(--color-mebl-dark);
   font-size: clamp(1.125rem, 0.7154rem + 2vw, 3.25rem);
 }
