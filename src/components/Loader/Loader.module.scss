@@ -1,0 +1,29 @@
+.loader-container {
+  inset: 0;
+  flex-grow: 1;
+  padding-block: 60px;
+  display: grid;
+  place-content: center;
+
+  @media (min-width: 820px) {
+    min-height: 400px;
+  }
+}
+
+.spinner {
+  width: 70px;
+  padding: .6em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-mebl);
+  --mask: 
+    conic-gradient(#0000 10%, #000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: spinner 1s infinite linear;
+}
+
+@keyframes spinner {to{transform: rotate(1turn)}}

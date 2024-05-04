@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  position: absolute;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  background-color: transparent;
+  z-index: 100;
+
+  &__block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+
+    & a:focus-visible {
+      outline-color: var(--color-mebl);
+    }
+  }
+
+  &__logo {
+    width: 50px;
+
+  }
+}
