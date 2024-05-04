@@ -4,12 +4,19 @@
   gap: 10px;
 
   &__img {
-    width: 50px;
+    width: 30px;
+    @media (min-width: 580px) {
+      width: 50px;
+    }
   }
+
 
   &__text {
     color: var(--color-mebl);
-    font-size: 50px;
-    font-size: clamp(1.125rem, 0.7154rem + 2.0482vw, 3.25rem);
+    font-size: clamp(
+      20px,
+      calc(10px + (20 * (100vw - 580px) / (1200 - 580))),
+      30px,
+    );
   }
 }
