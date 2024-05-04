@@ -11,7 +11,6 @@ export const Main = ({ path }) => {
     );
   }
 
-
   if (path === "notfound") {
     return <Page404 />;
   }

@@ -7,18 +7,6 @@ export const router = createBrowserRouter([
     element: <Page pathname="home" />
   },
   {
-    path: "/category",
-    element: <Page pathname="category" />
-  },
-  {
-    path: "/cartForm",
-    element: <Page pathname="cartForm" />
-  },
-  {
-    path: "/order/:orderId",
-    element: <Page pathname="order" />
-  },
-  {
     path: "*",
     element: <Page pathname="notfound" />
   }

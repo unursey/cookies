@@ -19,12 +19,15 @@
     }
   }
 
-  &__link {
-    color: var(--color-gray-dark);
+  &__btn {
+    color: var(--color-dark);
     outline: none;
-    // border: 1px solid var(--color-mebl);
-    white-space: nowrap;
-    
+    font-size: clamp(
+      16px,
+      calc(4px + (16 * (100vw - 580px) / (1200 - 580))),
+      20px,
+    );
+    text-wrap: nowrap;
     line-height: 24px;
 
 

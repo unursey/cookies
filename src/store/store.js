@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import orderReducer from "./order/order.slice";
+import cookieReducer from "./cookie/cookieSlice";
 
 export const store = configureStore({
   reducer: {
-    order: orderReducer
+    cookie: cookieReducer
   },
 });

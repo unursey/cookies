@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeImage } from "../../store/cookie/cookieSlice";
 import { Container } from "../Container/Container";
 import s from "./Hero.module.scss";
 import { useLottie } from "lottie-react";
 import hero from "../../lotties/hero.json";
-import cookie from "/images/cookies.png";
-import cookieOpen from "/images/cookies-open.png";
 import clickSound from "/audio/click-sound.mp3";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 
 function Hero() {
-  const [imageSrc, setImageSrc] = useState(cookie);
-  const [randomPhrase, setRandomPhrase] = useState("");
-  const [firstClick, setFirstClick] = useState(false);
+  const dispatch = useDispatch();
+  const { imageSrc, randomPhrase, firstClick } = useSelector((state) => state.cookie);
+  const [error, setError] = useState(null);
 
   const optionsHero = {
     autoplay: true,
@@ -24,27 +25,30 @@ function Hero() {
 
   const { View } = useLottie(optionsHero);
 
-  function changeImage() {
+  function changeCookie() {
     if (!firstClick) {
-      setFirstClick(true);
-
       fetch("/phrases.json?url")
         .then(response => response.json())
         .then(data => {
-          console.log("Data loaded successfully:", data);
           const phrases = data.phrases;
           const randomIndex = Math.floor(Math.random() * phrases.length);
           const randomPhrase = phrases[randomIndex];
-          setRandomPhrase(randomPhrase);
-          setImageSrc(cookieOpen);
+          dispatch(changeImage({ randomPhrase }));
         })
-        .catch(error => console.error("Ошибка при загрузке JSON файла:", error));
+        .catch(error => {
+          console.error("Ошибка при загрузке JSON файла:", error);
+          setError(error);
+        });
     }
   }
 
   function playAudio() {
     const audio = new Audio(clickSound);
     audio.play();
+  }
+
+  if (error) {
+    return <ErrorMessage message={error} />;
   }
 
   return (
@@ -57,7 +61,7 @@ function Hero() {
           <h1 className={"visually-hidden"}>Печеньки с предсказанием</h1>
 
           <button className={s.btn} onClick={() => {
-            changeImage(); playAudio();
+            changeCookie(); playAudio();
           }} disabled={firstClick}>
             <div className={s.imgWrapper}>
               <img className={`${s.img}`} src={imageSrc} alt="Cookie image" />

@@ -12,11 +12,12 @@
 
 
   &__text {
+    text-transform: uppercase;
     color: var(--color-mebl);
     font-size: clamp(
-      20px,
-      calc(10px + (20 * (100vw - 580px) / (1200 - 580))),
-      30px,
+      25px,
+      calc(15px + (25 * (100vw - 580px) / (1200 - 580))),
+      40px,
     );
   }
 }

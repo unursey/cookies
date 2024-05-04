@@ -12,10 +12,12 @@
     align-items: center;
     gap: 16px;
     justify-content: space-between;
+    flex-direction: column;
 
-    & a:focus-visible {
-      outline-color: var(--color-mebl);
+    @media (min-width: 450px) {
+      flex-direction: row;
     }
+
   }
 
   &__logo {

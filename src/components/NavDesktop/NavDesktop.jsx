@@ -1,12 +1,19 @@
-// import { getCatalogIcon } from "../../helpers/getCatalogIcon";
 import styles from "./NavDesktop.module.scss";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { reset } from "../../store/cookie/cookieSlice";
 
 function NavDesktop() {
+  const dispatch = useDispatch();
+
+  const handleResetHero = (e) => {
+    e.preventDefault();
+    dispatch(reset());
+  };
+
   return (
-    <Link className={styles["catalog__link"]} to={"#"} onClick={() => window.location.reload()}>
+    <button className={styles["catalog__btn"]} onClick={handleResetHero}>
       Открыть еще одну
-    </Link>
+    </button>
   );
 }
 
