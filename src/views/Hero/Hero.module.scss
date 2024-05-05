@@ -1,6 +1,9 @@
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  height: 80vh;
+  min-height: 80vh;
   background-color: var(--color-light);
   overflow: hidden;
 }
@@ -28,12 +31,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 40px;
-  flex-grow: 1;
-  position: relative;
   z-index: 2;
   align-self: center;
-  padding: 8rem 0;
   color: var(--color-mebl-dark);
   font-size: clamp(1.125rem, 0.7154rem + 2vw, 3.25rem);
 }
@@ -52,6 +51,10 @@
   @media (min-width: 580px) {
     max-width: 500px;
   }
+}
+
+.btn img {
+  object-fit: contain;
 }
 
 .btn:hover {
